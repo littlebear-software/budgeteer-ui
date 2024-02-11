@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+// color constants
+$color-background: #0b141c;
+$color-primary: #122333;
+$color-secondary: #0f1c28;
+$color-primary-text: #ffffff;
+$color-secondary-text: #656c7e;
+
+html,
+body {
+    background-color: $color-background;
+    height: 100vh;
+    overflow: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+h2 {
+    color: $color-primary-text;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@import 'material-icons/iconfont/round.css';
