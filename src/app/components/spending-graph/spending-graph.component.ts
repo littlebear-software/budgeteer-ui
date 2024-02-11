@@ -12,7 +12,6 @@ import Chart from 'chart.js/auto';
 export class SpendingGraphComponent {
   constructor(private readonly spendingapi: SpendingApiService) { }
   spending: Spend[] = [];
-  chartOptions = {};
 
   chart: any = [];
 
@@ -42,12 +41,14 @@ export class SpendingGraphComponent {
             display: true,
             ticks: {
               stepSize: 200,
-            }
+              callback: (value) => {
+                return '$' + value;
+              }
+            },
+            labels: []
           }
         }
       }
     })
   }
-
-
 }
