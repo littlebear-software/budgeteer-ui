@@ -7,18 +7,58 @@ export class SpendingApiService {
 
   constructor() { }
 
-  getSpending(): Spend[] {
+  get spendingByCategory(): Category[] {
     return [
-      { "month": "Oct", "amt": 100.00 },
-      { "month": "Nov", "amt": 200.00 },
-      { "month": "Dec", "amt": 300.00 },
-      { "month": "Jan", "amt": 200.00 },
-      { "month": "Feb", "amt": 100.00 }
+      {
+        categoryName: "Entertainment",
+        spending: [
+          { date: new Date(2023, 9, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 10, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 11, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 0, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 1, 1), amt: Math.random() * 1000 }
+        ]
+      },
+      {
+        categoryName: "Dining",
+        spending: [
+          { date: new Date(2023, 9, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 10, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 11, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 0, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 1, 1), amt: Math.random() * 1000 }
+        ]
+      },
+      {
+        categoryName: "Automotive",
+        spending: [
+          { date: new Date(2023, 9, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 10, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 11, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 0, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 1, 1), amt: Math.random() * 1000 }
+        ]
+      },
+      {
+        categoryName: "Groceries",
+        spending: [
+          { date: new Date(2023, 9, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 10, 1), amt: Math.random() * 1000 },
+          { date: new Date(2023, 11, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 0, 1), amt: Math.random() * 1000 },
+          { date: new Date(2024, 1, 1), amt: Math.random() * 1000 }
+        ]
+      }
     ]
   }
 }
 
+export class Category {
+  categoryName: string = "";
+  spending: Spend[] = [];
+}
+
 export class Spend {
-  month: string = '';
+  date: Date = new Date();
   amt: number = 0;
 }
