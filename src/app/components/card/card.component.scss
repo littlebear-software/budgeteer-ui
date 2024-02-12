@@ -1,12 +1,23 @@
 @import '../../../styles.scss';
 @import '../../pages/dashboard/dashboard.component.scss';
 
-.card {
+:host {
     height: 400px;
-    // flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
     background-color: $color-secondary;
+}
+
+.title {
+    height: 10%;
+    width: 100%;
+    color: $color-primary-text;
+    background-color: $color-primary;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
