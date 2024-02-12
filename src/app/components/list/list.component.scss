@@ -1,0 +1,23 @@
+@import '../../../styles.scss';
+
+:host {
+    width: 100%;
+    height: 100%;
+    padding: 10px 5px;
+}
+
+div {
+    width: 100%;
+    min-height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+span {
+    height: 40px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $color-primary-text;
+    padding: 5px 15px;
+}

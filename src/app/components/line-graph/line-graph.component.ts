@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SpendingApiService, Spend } from '../../providers/spending/spending-api.service';
+import { SpendingApiService, Spending } from '../../providers/spending/spending-api.service';
 import Chart from 'chart.js/auto';
 import { Category } from '../../providers/spending/spending-api.service';
 
@@ -14,19 +14,11 @@ import { Category } from '../../providers/spending/spending-api.service';
 export class LineGraphComponent {
   constructor(private readonly spendingapi: SpendingApiService) { }
 
-  colors: string[] = ['#3628f5', '#65da42', '#f2f21f', '#ec3538', '#eb3785']
-
   @Input() data: Category[] = [];
 
-  spending: Spend[] = [];
+  spending: Spending[] = [];
   chart: any = [];
   colorIndex: number = 0;
-
-  get color(): string {
-    let color = this.colors[this.colorIndex];
-    this.colorIndex++;
-    return color
-  }
 
   ngOnInit(): void {
     this.colorIndex = 0;
@@ -38,13 +30,12 @@ export class LineGraphComponent {
         }),
         datasets: this.data.map((item) => {
           return {
-            label: item.categoryName,
+            label: item.name,
             data: item.spending.map(item => {
               return item.amt;
             }),
             fill: false,
-            // borderColor: "#" + ((1 << 24) * Math.random() | 0).toString(16).padStart(6, "0"),
-            borderColor: this.color,
+            borderColor: item.color,
             tension: 0.2,
             pointStyle: 'line'
           }
@@ -57,14 +48,22 @@ export class LineGraphComponent {
             grid: { display: false },
           },
           y: {
-            display: false,
+            display: true,
             ticks: {
               stepSize: 200,
               callback: (value) => {
                 return '$' + value;
               }
             },
-            grid: { display: true }
+            grid: { display: false }
+          }
+        },
+        plugins: {
+          legend: {
+            display: false,
+            labels: {
+              color: 'white',
+            }
           }
         }
       }

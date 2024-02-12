@@ -1,0 +1,5 @@
+<div class="container" *ngFor="let transaction of data" [style]="'border-left: 2px solid '+transaction.category.color">
+    <span>{{transaction.category.name}}</span>
+    <span>{{transaction.vendor}}</span>
+    <span>${{transaction.amt}}</span>
+</div>
