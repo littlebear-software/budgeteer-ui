@@ -1,5 +1,9 @@
-<div class="container" *ngFor="let transaction of data" [style]="'border-left: 2px solid '+transaction.category.color">
-    <span>{{transaction.category.name}}</span>
-    <span>{{transaction.vendor}}</span>
-    <span>${{transaction.amt}}</span>
+<div class="container" *ngFor="let item of months | keyvalue">
+    <span class="date">{{item.key}}</span>
+    <div class="transaction" *ngFor="let transaction of item.value"
+        [style]="'border-left: 2px solid '+transaction.category.color">
+        <span>{{transaction.category.name}}</span>
+        <span>{{transaction.vendor}}</span>
+        <span>${{transaction.amount}}</span>
+    </div>
 </div>

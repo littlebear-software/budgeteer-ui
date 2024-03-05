@@ -25,9 +25,10 @@ main {
 
 .span-2-col {
     grid-row: auto / span 2;
-    flex: 1;
+    height: 100%;
 }
 
 .span-3-col {
     grid-row: auto / span 3;
+    height: 100%;
 }
