@@ -1,73 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { Category } from '../spending/spending-api.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionsApiService {
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  getTransactions(pageNumber: number = 1, pageSize: number = 10): Observable<Transaction[]> {
-    var transactions: Transaction[] = [
-      {
-        vendor: "Taco Bell",
-        amt: 24.99,
-        category: {
-          name: 'Dining',
-          color: '#9DBC98',
-          transactions: [],
-          spending: [],
-        }
-      },
-      {
-        vendor: "Prattville Country Club",
-        amt: 70.00,
-        category: {
-          name: 'Entertainment',
-          color: '#BB6464',
-          transactions: [],
-          spending: [],
-        }
-      },
-      {
-        vendor: "Citgo",
-        amt: 84.98,
-        category: {
-          name: 'Automotive',
-          color: '#7BD3EA',
-          transactions: [],
-          spending: [],
-        }
-      },
-      {
-        vendor: "Beef O'Brady's",
-        amt: 64.99,
-        category: {
-          name: 'Dining',
-          color: '#9DBC98',
-          transactions: [],
-          spending: [],
-        }
-      },
-      {
-        vendor: "Walmart",
-        amt: 245.88,
-        category: {
-          name: 'Groceries',
-          color: '#FDFFAE',
-          transactions: [],
-          spending: [],
-        }
-      },
-    ];
-
-    return of(transactions);
+  getTransactions(pageNumber: number = 1, pageSize: number = 30): Observable<Transaction[]> {
+    return this.httpClient.get<Transaction[]>(`http://localhost:5146/api/transaction?pageNumber=${pageNumber}&pageSize=${pageSize}`);
   }
 }
 
 export class Transaction {
+  date: Date = new Date();
   vendor: string = "";
-  amt: number = 0;
+  amount: number = 0;
   category: Category = new Category();
 }

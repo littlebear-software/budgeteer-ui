@@ -9,15 +9,17 @@
     align-items: center;
     border-radius: 10px;
     background-color: $color-secondary;
+    overflow-y: scroll;
 }
 
 .title {
-    height: 10%;
-    width: 100%;
     color: $color-primary-text;
     background-color: $color-primary;
-    border-radius: 15px 15px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 40px;
+    width: 100%;
+    position: sticky;
+    top: 0;
 }
